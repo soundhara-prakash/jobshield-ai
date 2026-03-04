@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JobShield AI</title>
+</head>
+
+<body>
+
+<h2>AI Fake Job Detection</h2>
+
+<textarea id="jobtext" rows="6" cols="50" placeholder="Paste job description here"></textarea>
+
+<br><br>
+
+<button onclick="checkJob()">Analyze Job</button>
+
+<h3 id="result"></h3>
+
+<script>
+
+async function checkJob(){
+
+let text = document.getElementById("jobtext").value;
+
+let response = await fetch("http://127.0.0.1:5000/predict",{
+method:"POST",
+headers:{
+'Content-Type':'application/json'
+},
+body:JSON.stringify({text:text})
+});
+
+let data = await response.json();
+
+document.getElementById("result").innerText =
+"Prediction: " + data.prediction;
+
+}
+
+</script>
+
+</body>
+</html>
