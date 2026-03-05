@@ -2,25 +2,151 @@
 <html>
 <head>
 <title>JobShield AI</title>
+
+<style>
+
+body{
+font-family: "Segoe UI", Arial, sans-serif;
+background: linear-gradient(135deg,#eef2f7,#dfe9f3);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 15px 35px rgba(0,0,0,0.12);
+width:650px;
+text-align:center;
+}
+
+.badge{
+display:inline-block;
+background:#2f80ed;
+color:white;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+margin-bottom:10px;
+}
+
+h2{
+margin:5px 0 10px 0;
+color:#2c3e50;
+}
+
+.subtitle{
+font-size:14px;
+color:#7f8c8d;
+margin-bottom:20px;
+}
+
+textarea{
+width:100%;
+padding:12px;
+font-size:14px;
+border-radius:6px;
+border:1px solid #ccc;
+resize:none;
+}
+
+textarea:focus{
+outline:none;
+border-color:#2f80ed;
+}
+
+button{
+margin-top:15px;
+padding:12px 26px;
+background:#2f80ed;
+color:white;
+border:none;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+background:#1c60c5;
+}
+
+#loading{
+margin-top:20px;
+font-size:14px;
+color:#7f8c8d;
+display:none;
+}
+
+#result{
+margin-top:20px;
+font-size:18px;
+font-weight:600;
+}
+
+#flags{
+margin-top:15px;
+text-align:left;
+background:#f7f9fc;
+padding:15px;
+border-radius:6px;
+font-size:14px;
+display:none;
+}
+
+.flag-title{
+font-weight:bold;
+margin-bottom:8px;
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h2>AI Fake Job Detection</h2>
+<div class="container">
 
-<textarea id="jobtext" rows="6" cols="50" placeholder="Paste job description here"></textarea>
+<div class="badge">AI Analysis Engine</div>
 
-<br><br>
+<h2>JobShield – Fake Job Detection</h2>
+
+<div class="subtitle">
+Analyze job descriptions using NLP to detect potential scam listings
+</div>
+
+<textarea id="jobtext" rows="6" placeholder="Paste job description here"></textarea>
+
+<br>
 
 <button onclick="checkJob()">Analyze Job</button>
 
-<h3 id="result"></h3>
+<div id="loading">Analyzing job description using AI...</div>
+
+<div id="result"></div>
+
+<div id="flags"></div>
+
+</div>
 
 <script>
 
 async function checkJob(){
 
 let text = document.getElementById("jobtext").value;
+
+if(text.trim() === ""){
+alert("Please enter a job description.");
+return;
+}
+
+document.getElementById("loading").style.display="block";
+document.getElementById("result").innerText="";
+document.getElementById("flags").style.display="none";
 
 let response = await fetch("http://127.0.0.1:5000/predict",{
 method:"POST",
@@ -32,8 +158,37 @@ body:JSON.stringify({text:text})
 
 let data = await response.json();
 
-document.getElementById("result").innerText =
-"Prediction: " + data.prediction;
+document.getElementById("loading").style.display="none";
+
+let resultElement = document.getElementById("result");
+let flagsElement = document.getElementById("flags");
+
+let prediction = data.prediction.toUpperCase();
+let score = data.risk_score.toFixed(2);
+
+resultElement.innerText =
+"Prediction: " + prediction + " (Risk Score: " + score + ")";
+
+if(data.prediction === "scam"){
+resultElement.style.color = "#e74c3c";
+}
+else{
+resultElement.style.color = "#27ae60";
+}
+
+if(data.flags && data.flags.length > 0){
+
+flagsElement.style.display = "block";
+
+let flagHTML = "<div class='flag-title'>Flagged Patterns:</div>";
+
+data.flags.forEach(function(item){
+flagHTML += "• " + item + "<br>";
+});
+
+flagsElement.innerHTML = flagHTML;
+
+}
 
 }
 
@@ -41,3 +196,14 @@ document.getElementById("result").innerText =
 
 </body>
 </html>
+<!-- sample fake and real job texts
+ fake job: Earn ₹30000 daily work from home registration fee required contact whatsapp immediately, or
+ Earn ₹30000 daily work from home
+Registration fee required
+Contact WhatsApp immediately
+ real job: Software developer required with 2 years experience salary 6 LPA apply through company website or
+ Software developer required
+2 years experience
+Salary 6 LPA
+Apply through company website
+ -->
