@@ -1,7 +1,8 @@
 # JobShield – AI-Powered Fake Job Detection System
 
-JobShield is an AI-based system designed to detect fraudulent job listings on digital job platforms and freelance marketplaces.  
-The system analyzes job descriptions using Natural Language Processing (NLP) and classifies them as **Real** or **Scam**.
+JobShield is an AI-based system designed to detect fraudulent job listings circulating across **online job ecosystems**, including professional networking platforms, social media channels, and digital job communities.
+
+The system analyzes job descriptions using **Natural Language Processing (NLP)** and classifies them as **Real** or **Scam**.
 
 ---
 
@@ -11,18 +12,23 @@ Fraudulent job opportunities are increasingly circulated through online job ecos
 Scammers often advertise unrealistic earnings, request registration fees, or redirect applicants to external contacts through messaging platforms.
 Because these scams appear across multiple digital channels, it is difficult for users to manually identify fraudulent listings.
 Manual moderation is difficult at scale, creating the need for **automated AI-based detection systems**.
+Fraudulent job opportunities are increasingly spread across online job ecosystems.  
+Scammers often advertise unrealistic earnings, request registration fees, or redirect applicants to external communication channels.
 
+Because such listings appear across multiple digital platforms, it becomes difficult for users to manually identify fraudulent posts.
+
+This creates the need for **automated AI-based detection systems** that can analyze job descriptions and flag suspicious listings.
 ---
 
 ## Proposed Solution
 
-JobShield uses **NLP-based text classification** to analyze job descriptions and detect suspicious patterns.
+JobShield uses **NLP-based text classification** to analyze job descriptions and detect fraudulent patterns.
 
 The system processes job text through a machine learning pipeline and returns:
 
-- Prediction (Real / Scam)
-- Risk Score
-- Flagged suspicious patterns
+- Prediction (**Real / Scam**)
+- Model **Confidence**
+- **Flagged suspicious patterns** explaining the prediction
 
 ---
 
@@ -44,17 +50,17 @@ Prediction Output
 
 ## Technology Stack
 
-Frontend  
-- HTML  
-- CSS  
-- JavaScript  
+### Frontend
+- HTML
+- CSS
+- JavaScript
 
-Backend  
-- Python Flask  
+### Backend
+- Python Flask
 
-Machine Learning  
-- Scikit-learn  
-- TF-IDF Vectorization  
+### Machine Learning
+- Scikit-learn
+- TF-IDF Vectorization
 - Logistic Regression
 
 ---
@@ -62,7 +68,7 @@ Machine Learning
 ## Features
 
 - AI-based job scam detection
-- Risk score prediction
+- Confidence score for prediction
 - Explainable AI output showing flagged patterns
 - Simple web interface for demonstration
 
@@ -70,7 +76,7 @@ Machine Learning
 
 ## Example Output
 
-Input Job Description
+### Input Job Description
 
 
 Earn ₹30000 daily work from home
@@ -78,19 +84,16 @@ Registration fee required
 Contact WhatsApp immediately
 
 
-Output
+### Output
 
 
 Prediction: SCAM
-Risk Score: 0.91
+Confidence: 0.91
 
 Flagged Patterns:
-
-Registration Fee
-
-External Contact
-
-Unrealistic Earnings
+• Registration Fee
+• External Contact
+• Unrealistic Earnings
 
 
 ---
@@ -127,10 +130,10 @@ Hosted by the Coding Club at PSG College of Technology.
 
 ## Future Improvements
 
-- Train model on larger real-world datasets
-- Integrate with live job platforms
-- Add advanced NLP models (BERT / Transformer models)
-- Build a browser extension for scam detection
+- Train the model on larger real-world datasets
+- Integrate with live digital job platforms
+- Add advanced NLP models (BERT / Transformer architectures)
+- Develop a browser extension for scam detection
 
 ---
 
