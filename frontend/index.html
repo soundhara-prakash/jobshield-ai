@@ -164,10 +164,10 @@ let resultElement = document.getElementById("result");
 let flagsElement = document.getElementById("flags");
 
 let prediction = data.prediction.toUpperCase();
-let score = data.risk_score.toFixed(2);
+let score = data.confidence.toFixed(2);
 
 resultElement.innerText =
-"Prediction: " + prediction + " (Risk Score: " + score + ")";
+"Prediction: " + prediction + " (Confidence: " + score + ")";
 
 if(data.prediction === "scam"){
 resultElement.style.color = "#e74c3c";

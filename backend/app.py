@@ -17,7 +17,7 @@ def predict():
     vectorized_text = vectorizer.transform([data])
     prediction = model.predict(vectorized_text)[0]
     proba = model.predict_proba(vectorized_text)[0]
-    risk_score = max(proba)
+    confidence = max(proba)
     text_lower = data.lower()
     flagged_patterns = []
     if "registration fee" in text_lower:
@@ -28,7 +28,7 @@ def predict():
         flagged_patterns.append("Unrealistic Earnings")
     return jsonify({
         "prediction": prediction,
-        "risk_score": float(risk_score),
+        "confidence": float(confidence),
         "flags": flagged_patterns
     })
 
