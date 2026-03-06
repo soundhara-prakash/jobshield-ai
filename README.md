@@ -8,16 +8,13 @@ The system analyzes job descriptions using **Natural Language Processing (NLP)**
 
 ## Problem Statement
 
-Fraudulent job opportunities are increasingly circulated through online job ecosystems, including professional networking platforms, social media channels, and messaging applications.
-Scammers often advertise unrealistic earnings, request registration fees, or redirect applicants to external contacts through messaging platforms.
-Because these scams appear across multiple digital channels, it is difficult for users to manually identify fraudulent listings.
-Manual moderation is difficult at scale, creating the need for **automated AI-based detection systems**.
 Fraudulent job opportunities are increasingly spread across online job ecosystems.  
 Scammers often advertise unrealistic earnings, request registration fees, or redirect applicants to external communication channels.
 
 Because such listings appear across multiple digital platforms, it becomes difficult for users to manually identify fraudulent posts.
 
 This creates the need for **automated AI-based detection systems** that can analyze job descriptions and flag suspicious listings.
+
 ---
 
 ## Proposed Solution
