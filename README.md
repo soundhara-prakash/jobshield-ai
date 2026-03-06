@@ -7,9 +7,9 @@ The system analyzes job descriptions using Natural Language Processing (NLP) and
 
 ## Problem Statement
 
-Online job portals increasingly face fraudulent job postings that promise unrealistic earnings or request registration fees.  
-These scams often target job seekers and freelancers.
-
+Fraudulent job opportunities are increasingly circulated through online job ecosystems, including professional networking platforms, social media channels, and messaging applications.
+Scammers often advertise unrealistic earnings, request registration fees, or redirect applicants to external contacts through messaging platforms.
+Because these scams appear across multiple digital channels, it is difficult for users to manually identify fraudulent listings.
 Manual moderation is difficult at scale, creating the need for **automated AI-based detection systems**.
 
 ---
