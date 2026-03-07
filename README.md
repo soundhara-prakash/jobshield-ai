@@ -112,8 +112,7 @@ jobshield-ai
 
 ## Demo Video
 
-Demo Video Link:  
-(Add your Google Drive or YouTube link here)
+Demo Video Link:  https://youtu.be/kTPhvfMggwo
 
 ---
 
